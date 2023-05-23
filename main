@@ -1,0 +1,50 @@
+###################################################################/
+#                       Simple Guessing Game                       #
+#                User inputs a number between 1 - 20               #
+#        To win: input must match system's randomly chosen number  #
+#               Keep guessing until a match is found!              #
+#                   Press 'Q' to Quit. Have fun!                   #
+#                         Author: @heyitsjanai                     #
+###################################################################/
+
+import random
+
+print(
+    '\nWelcome to the Guessing Game!\n'
+    'Enter a number between 1 and 20.\n'
+    'If it matches my number, you win!\n'
+    'If not, you have to guess again! \n'
+    
+    'Take as many tries as you need, press \'Q\' to quit\n'
+    'Good luck!\n'
+)
+#Generate a random number outside the while loop so it stays the same
+answer = random.randint(0, 20)
+#Get the user's initial input
+guess = input("Guess a number between 1 and 20: ")
+
+#infinite loop that only breaks if user selects q
+#or if the user correctly guesses the answer
+while True:
+    #Checks to see if user wants to quit
+    if guess == 'q' or guess == 'Q':
+        print('Goodbye!')
+        break
+    #otherwise, keeps executing
+    else:
+        #Converts guess into an integer
+        numberGuessed = int(guess)
+        #Validates input is between 1-20
+        if numberGuessed < 0 or numberGuessed > 20:
+            print('Invalid entry\n')
+            #Gets a new guess from the user
+            guess = input("Guess a number between 1 and 20: ")
+        #If guess is the answer, the game is over
+        elif numberGuessed is answer:
+            print('It\'s a match! You win!\n')
+            break
+        #If the guess is valid, but not the answer, keeps executing
+        else:
+            print('Nope!\n')
+            #Gets next guess from the user
+            guess = input("Guess a number between 1 and 20: ")
